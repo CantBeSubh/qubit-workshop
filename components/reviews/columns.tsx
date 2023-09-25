@@ -52,7 +52,7 @@ export const columns: ColumnDef<Review>[] = [
         cell: ({ row }) => {
             //TODO FIXME
             // eslint-disable-next-line react-hooks/rules-of-hooks
-            const { upvoteReview, downvoteReview, deleteReview } = useReviews();
+            const { deleteReview } = useReviews();
             const review = row.original as Review
             return (
                 <DropdownMenu>
