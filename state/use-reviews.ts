@@ -8,8 +8,6 @@ import { toast } from 'react-hot-toast';
 interface ReviewsStore {
     reviews: Review[];
     addReview: (review: Review) => void;
-    upvoteReview: (iat: Date) => void;
-    downvoteReview: (iat: Date) => void;
     deleteReview: (iat: Date) => void;
 }
 
@@ -23,32 +21,6 @@ export const useReviews = create(
                     reviews: [...state.reviews, review],
                 }))
                 toast.success("Review added successfully");
-            },
-            upvoteReview: (iat) => {
-                set((state) => ({
-                    reviews: state.reviews.map((review) =>
-                        review.iat === iat
-                            ? {
-                                ...review,
-                                up: review.up + 1,
-                            }
-                            : review
-                    ),
-                }))
-                toast.success("Review upvoted successfully");
-            },
-            downvoteReview: (iat) => {
-                set((state) => ({
-                    reviews: state.reviews.map((review) =>
-                        review.iat === iat
-                            ? {
-                                ...review,
-                                down: review.down + 1,
-                            }
-                            : review
-                    ),
-                }))
-                toast.success("Review downvoted successfully");
             },
             deleteReview: (iat) => {
                 set((state) => ({
